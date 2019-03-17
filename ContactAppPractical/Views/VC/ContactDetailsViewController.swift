@@ -11,8 +11,10 @@ import UIKit
 class ContactDetailsViewController: UITableViewController {
     
     let cellID = "ContactEditCell"
-    var editOptions: [ContactEditOption]!
+    var editOptions = [ContactEditOption]()
     var contactDetails: ContactDetails!
+    var selectedContact: ContactList?
+    fileprivate let contactPresenter = ContactListPresenter(contactService: ContactService())
 
 
     @IBOutlet weak var headerImageView: CachedImageView!
@@ -26,21 +28,20 @@ class ContactDetailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-        setUpHeaderView()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-    }
-    
-    func setUpHeaderView() {
+        contactPresenter.attachView(view: self)
         msgButton.alignTextBelow(spacing: 4)
         callButton.alignTextBelow(spacing: 4)
         emailButton.alignTextBelow(spacing: 4)
         favButton.alignTextBelow(spacing: 4)
+        contactPresenter.performFetchWithID(id: selectedContact?.id ?? 0) {
+            self.setUpHeaderView()
+            self.tableView.reloadData()
+        }
         
+    }
+    
+    func setUpHeaderView() {
         favButton.addTarget(self, action: #selector(favButtonTapped(sender:)), for: .touchUpInside)
-        
         headerImageView.layer.cornerRadius = headerImageView.frame.width/2
         headerImageView.layer.masksToBounds = true
         if let profileImage = contactDetails.profilePic {
@@ -103,6 +104,31 @@ class ContactDetailsViewController: UITableViewController {
         return cell
     }
 
-    
+}
 
+extension ContactDetailsViewController: ContactView {
+    func startLoading() {
+    }
+    
+    func finishLoading() {
+    }
+    
+    func presentCreateScreen() {
+    }
+    func setContactList(users: [ContactList]) {
+    }
+    
+    func setContactListWithID(user: ContactDetails) {
+        contactDetails = user
+        editOptions.removeAll()
+        editOptions.append(ContactEditOption(fieldLabel: "mobile", fieldEditText: user.phoneNumber ?? ""))
+        editOptions.append(ContactEditOption(fieldLabel: "email", fieldEditText: user.email ?? ""))
+        
+    }
+
+    
+    func showAlertWithError(error: Error) {
+    }
+    
+    
 }

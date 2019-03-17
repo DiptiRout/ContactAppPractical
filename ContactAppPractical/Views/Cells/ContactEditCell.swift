@@ -16,7 +16,7 @@ class ContactEditCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        fieldEditText.delegate = self
     }
     
     var editOptions: ContactEditOption? {
@@ -34,5 +34,20 @@ class ContactEditCell: UITableViewCell {
             }
         }
     }
+}
 
+extension ContactEditCell: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if fieldLabel.text == "mobile" {
+            textField.keyboardType = .numberPad
+        }
+        else if fieldLabel.text == "email" {
+            textField.keyboardType = .emailAddress
+        }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

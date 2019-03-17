@@ -76,11 +76,10 @@ extension ContactListTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = groupedContactList[indexPath.section][indexPath.row]
         let detailsVC = ContactDetailsViewController.instantiate(storyboardName: .main) as! ContactDetailsViewController
-        contactPresenter.performFetchWithID(id: contact.id ?? 0) {
-            detailsVC.contactDetails = self.contactDetails
-            detailsVC.editOptions = self.contactEditOptions
-            self.navigationController?.pushViewController(detailsVC, animated: true)
-        }
+        detailsVC.selectedContact = contact
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+
+        
     }
 }
 

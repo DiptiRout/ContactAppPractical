@@ -19,6 +19,15 @@ extension UIViewController {
         let identifier = String(describing: self)
         return storyboard.instantiateViewController(withIdentifier: identifier) as! T
     }
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
 extension UIImage {
@@ -42,5 +51,6 @@ extension UIButton {
             self.imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + spacing), left: 0.0, bottom: 0.0, right: -titleSize.width)
         }
     }
-    
 }
+
+

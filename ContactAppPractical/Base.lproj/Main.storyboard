@@ -64,31 +64,31 @@
                                     </constraints>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="iYU-IK-0jf">
-                                    <rect key="frame" x="44" y="214" width="326" height="65"/>
+                                    <rect key="frame" x="44" y="219" width="326" height="60"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47C-8C-HMx">
-                                            <rect key="frame" x="0.0" y="0.0" width="59.666666666666664" height="65"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="59.666666666666664" height="60"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="message" image="message_button">
                                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ne-kX-wjZ">
-                                            <rect key="frame" x="88.666666666666657" y="0.0" width="60" height="65"/>
+                                            <rect key="frame" x="88.666666666666657" y="0.0" width="60" height="60"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="call" image="call_button">
                                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gR2-X8-N4u">
-                                            <rect key="frame" x="177.66666666666666" y="0.0" width="59.666666666666657" height="65"/>
+                                            <rect key="frame" x="177.66666666666666" y="0.0" width="59.666666666666657" height="60"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="email" image="email_button">
                                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCZ-h2-9ZB">
-                                            <rect key="frame" x="266.33333333333331" y="0.0" width="59.666666666666686" height="65"/>
+                                            <rect key="frame" x="266.33333333333331" y="0.0" width="59.666666666666686" height="60"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <state key="normal" title="favourite" image="favourite_button">
                                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -97,10 +97,10 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="65" id="5TE-le-bDK"/>
+                                        <constraint firstAttribute="height" constant="60" id="5TE-le-bDK"/>
                                     </constraints>
                                 </stackView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G74-vN-uCr">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G74-vN-uCr">
                                     <rect key="frame" x="8" y="188" width="398" height="20.333333333333343"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -203,7 +203,7 @@
         <scene sceneID="A4T-Ru-wj8">
             <objects>
                 <tableViewController storyboardIdentifier="CreateContactViewController" id="vXh-1B-tBY" customClass="CreateContactViewController" customModule="ContactAppPractical" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ICs-we-Y9E">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ICs-we-Y9E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -222,6 +222,7 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="wNV-zv-dv5" secondAttribute="trailing" constant="127" id="3cD-5q-Ijk"/>
                                 <constraint firstItem="wNV-zv-dv5" firstAttribute="top" secondItem="bun-wg-sOY" secondAttribute="top" constant="20" id="RAC-Mb-bbJ"/>
+                                <constraint firstAttribute="bottom" secondItem="wNV-zv-dv5" secondAttribute="bottom" constant="20" id="Vvz-zQ-GJa"/>
                                 <constraint firstItem="wNV-zv-dv5" firstAttribute="leading" secondItem="bun-wg-sOY" secondAttribute="leading" constant="127" id="apR-Tt-HCE"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>

@@ -28,6 +28,8 @@ class CreateContactViewController: UITableViewController {
     }
     
     func setUpData() {
+        self.hideKeyboardWhenTappedAround()
+
         editOptions.append(ContactEditOption(fieldLabel: "First Name", fieldEditText: contactDetails?.firstName ?? "First Name"))
         editOptions.append(ContactEditOption(fieldLabel: "Last Name", fieldEditText: contactDetails?.lastName ?? "Last Name"))
         editOptions.append(ContactEditOption(fieldLabel: "mobile", fieldEditText: contactDetails?.phoneNumber ?? "mobile"))
@@ -68,5 +70,4 @@ class CreateContactViewController: UITableViewController {
         cell.isCreate = isCreate
         return cell
     }
-
 }
