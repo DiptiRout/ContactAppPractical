@@ -11,14 +11,31 @@ import UIKit
 class ContactDetailsViewController: UITableViewController {
     
 
+    @IBOutlet weak var msgButton: UIButton!
+    @IBOutlet weak var callButton: UIButton!
+    @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var favButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        msgButton.alignTextBelow(spacing: 4)
+        callButton.alignTextBelow(spacing: 4)
+        emailButton.alignTextBelow(spacing: 4)
+        favButton.alignTextBelow(spacing: 4)
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //self.editButtonItem.action
+        
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        print(editing)
     }
 
     // MARK: - Table view data source
