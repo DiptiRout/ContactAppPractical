@@ -28,3 +28,13 @@ struct ContactDetails: Codable {
     let createdAt: String?
     let updatedAt: String?
 }
+
+struct ContactEditOption: Codable {
+    let fieldLabel: String?
+    let fieldEditText: String?
+    
+    init(fieldLabel: String, fieldEditText: String) {
+        self.fieldLabel = fieldLabel
+        self.fieldEditText = fieldEditText
+    }
+}

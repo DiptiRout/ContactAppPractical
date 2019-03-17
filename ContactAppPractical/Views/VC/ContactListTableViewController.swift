@@ -13,6 +13,9 @@ class ContactListTableViewController: UITableViewController {
     
     let cellID = "ContactListCell"
     fileprivate var groupedContactList = [[ContactList]]()
+    fileprivate var contactDetails: ContactDetails!
+    fileprivate var contactEditOptions = [ContactEditOption]()
+
     fileprivate let contactPresenter = ContactListPresenter(contactService: ContactService())
     
     override func viewDidLoad() {
@@ -22,6 +25,7 @@ class ContactListTableViewController: UITableViewController {
         contactPresenter.performFetch {
             print("Data Fetched")
         }
+        
     }
     
 }
@@ -69,12 +73,17 @@ extension ContactListTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsVC = ContactDetailsViewController.instantiate(storyboardName: .main)
-        navigationController?.pushViewController(detailsVC, animated: true)
+        let contact = groupedContactList[indexPath.section][indexPath.row]
+        let detailsVC = ContactDetailsViewController.instantiate(storyboardName: .main) as! ContactDetailsViewController
+        contactPresenter.performFetchWithID(id: contact.id ?? 0) {
+            detailsVC.contactDetails = self.contactDetails
+            self.navigationController?.pushViewController(detailsVC, animated: true)
+        }
     }
 }
 
 extension ContactListTableViewController: ContactView {
+    
     
     func startLoading() {
         
@@ -101,6 +110,16 @@ extension ContactListTableViewController: ContactView {
         groupedContactList = groupedContacts
         tableView.reloadData()
     }
+    
+    func setContactListWithID(user: ContactDetails) {
+        contactDetails = user
+        contactEditOptions.append(ContactEditOption(fieldLabel: "First Name", fieldEditText: user.firstName ?? ""))
+        contactEditOptions.append(ContactEditOption(fieldLabel: "Last Name", fieldEditText: user.lastName ?? ""))
+        contactEditOptions.append(ContactEditOption(fieldLabel: "mobile", fieldEditText: user.phoneNumber ?? ""))
+        contactEditOptions.append(ContactEditOption(fieldLabel: "email", fieldEditText: user.email ?? ""))
+        
+    }
+    
     
     func showAlertWithError(error: Error) {
     }

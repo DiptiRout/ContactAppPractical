@@ -13,6 +13,7 @@ class ContactListCell: UITableViewCell {
     
     let thumImageView: CachedImageView = {
         let imageView = CachedImageView()
+        imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage().image(#imageLiteral(resourceName: "placeholder_photo"), withSize: CGSize(width: 40, height: 40))
         imageView.layer.cornerRadius = 20
         imageView.layer.masksToBounds = true

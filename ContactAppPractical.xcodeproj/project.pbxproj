@@ -26,6 +26,7 @@
 		DE39F700223E3930004AB3CC /* Swift+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F6FF223E3930004AB3CC /* Swift+Extentions.swift */; };
 		DE39F703223E3A4B004AB3CC /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F702223E3A4B004AB3CC /* ContactDetailsViewController.swift */; };
 		DE39F706223E429C004AB3CC /* DRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F705223E429C004AB3CC /* DRView.swift */; };
+		DE565332223E79E700125D67 /* ContactEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE565331223E79E700125D67 /* ContactEditCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		DE39F6FF223E3930004AB3CC /* Swift+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Extentions.swift"; sourceTree = "<group>"; };
 		DE39F702223E3A4B004AB3CC /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
 		DE39F705223E429C004AB3CC /* DRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRView.swift; sourceTree = "<group>"; };
+		DE565331223E79E700125D67 /* ContactEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				DE39F6F5223D9153004AB3CC /* ContactListCell.swift */,
+				DE565331223E79E700125D67 /* ContactEditCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				DE39F6FE223E2DAC004AB3CC /* UIView+Anchors.swift in Sources */,
 				DE39F6FB223E20AF004AB3CC /* DiscardableImageCacheItem.swift in Sources */,
 				DE39F6F6223D9153004AB3CC /* ContactListCell.swift in Sources */,
+				DE565332223E79E700125D67 /* ContactEditCell.swift in Sources */,
 				DE011C8E223CB051007A013B /* Support.swift in Sources */,
 				DE011C90223CB16E007A013B /* ContactService.swift in Sources */,
 				DE011C93223CB507007A013B /* ContactListPresenter.swift in Sources */,

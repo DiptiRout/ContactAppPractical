@@ -10,10 +10,13 @@ import Foundation
 
 class ContactService {
     
-    typealias FetchResult = Result<[ContactList], FetchError>
+    typealias FetchContacts = Result<[ContactList], FetchError>
+    typealias FetchContactDetails = Result<ContactDetails, FetchError>
+
+    let baseURL = "http://gojek-contacts-app.herokuapp.com"
     
-    func fetchContactList(handler: @escaping ((FetchResult) -> Void)) {
-        let url = URL(string: "http://gojek-contacts-app.herokuapp.com/contacts.json")!
+    func fetchContactList(handler: @escaping ((FetchContacts) -> Void)) {
+        let url = URL(string: "\(baseURL)/contacts.json")!
         var requestUrl = URLRequest(url: url)
         requestUrl.httpMethod = "GET"
         
@@ -25,5 +28,21 @@ class ContactService {
         
         task.resume()
     }
+    
+    func fetchContactListWithID(id: Int, handler: @escaping ((FetchContactDetails) -> Void)) {
+        let url = URL(string: "\(baseURL)/contacts/\(id).json")!
+        var requestUrl = URLRequest(url: url)
+        requestUrl.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: requestUrl, completionHandler: { (data, _, networkError) in
+            DispatchQueue.main.async {
+                handler(handleFetchResponse(data: data, networkError: networkError))
+            }
+        })
+        
+        task.resume()
+    }
+    
+    
     
 }
