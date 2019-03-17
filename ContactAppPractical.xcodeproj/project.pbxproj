@@ -27,6 +27,7 @@
 		DE39F703223E3A4B004AB3CC /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F702223E3A4B004AB3CC /* ContactDetailsViewController.swift */; };
 		DE39F706223E429C004AB3CC /* DRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F705223E429C004AB3CC /* DRView.swift */; };
 		DE565332223E79E700125D67 /* ContactEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE565331223E79E700125D67 /* ContactEditCell.swift */; };
+		DE565336223E99B000125D67 /* CreateContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE565335223E99B000125D67 /* CreateContactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		DE39F702223E3A4B004AB3CC /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
 		DE39F705223E429C004AB3CC /* DRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRView.swift; sourceTree = "<group>"; };
 		DE565331223E79E700125D67 /* ContactEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditCell.swift; sourceTree = "<group>"; };
+		DE565335223E99B000125D67 /* CreateContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 			children = (
 				DE00DBAC223D04B500110817 /* ContactListTableViewController.swift */,
 				DE39F702223E3A4B004AB3CC /* ContactDetailsViewController.swift */,
+				DE565335223E99B000125D67 /* CreateContactViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE39F6FE223E2DAC004AB3CC /* UIView+Anchors.swift in Sources */,
+				DE565336223E99B000125D67 /* CreateContactViewController.swift in Sources */,
 				DE39F6FB223E20AF004AB3CC /* DiscardableImageCacheItem.swift in Sources */,
 				DE39F6F6223D9153004AB3CC /* ContactListCell.swift in Sources */,
 				DE565332223E79E700125D67 /* ContactEditCell.swift in Sources */,

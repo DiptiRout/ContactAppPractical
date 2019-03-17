@@ -11,7 +11,7 @@ import UIKit
 class ContactDetailsViewController: UITableViewController {
     
     let cellID = "ContactEditCell"
-    var editOption: ContactEditOption!
+    var editOptions: [ContactEditOption]!
     var contactDetails: ContactDetails!
 
 
@@ -25,7 +25,6 @@ class ContactDetailsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(ContactEditCell.self, forCellReuseIdentifier: cellID)
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         setUpHeaderView()
         
@@ -76,34 +75,31 @@ class ContactDetailsViewController: UITableViewController {
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        print(editing)
+        //super.setEditing(editing, animated: animated)
+        let detailsVC = CreateContactViewController.instantiate(storyboardName: .main) as! CreateContactViewController
+        detailsVC.contactDetails = contactDetails
+        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if self.isEditing {
-            return 4
-        }
-        else {
-            return 2
-        }
+        return editOptions.count
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 56
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactEditCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         as! ContactEditCell
-        
+        cell.editOptions = editOptions[indexPath.row]
+        cell.isCreate = false
+        cell.isUserInteractionEnabled = false
         return cell
     }
 

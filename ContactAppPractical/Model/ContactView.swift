@@ -12,6 +12,7 @@ protocol ContactView: class {
     
     func startLoading()
     func finishLoading()
+    func presentCreateScreen()
     func setContactList(users: [ContactList])
     func setContactListWithID(user: ContactDetails)
     func showAlertWithError(error: Error)

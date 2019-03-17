@@ -12,6 +12,7 @@ class ContactEditCell: UITableViewCell {
 
     @IBOutlet weak var fieldEditText: UITextField!
     @IBOutlet weak var fieldLabel: UILabel!
+    var isCreate = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,8 +22,15 @@ class ContactEditCell: UITableViewCell {
     var editOptions: ContactEditOption? {
         didSet {
             if let editOptions = editOptions {
-                fieldLabel.text = editOptions.fieldLabel
-                fieldEditText.text = editOptions.fieldEditText
+                if isCreate {
+                    fieldLabel.text = editOptions.fieldLabel
+                    fieldEditText.placeholder = editOptions.fieldEditText
+                }
+                else {
+                    fieldLabel.text = editOptions.fieldLabel
+                    fieldEditText.text = editOptions.fieldEditText
+                }
+                
             }
         }
     }

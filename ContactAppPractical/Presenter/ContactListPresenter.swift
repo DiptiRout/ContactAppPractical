@@ -27,6 +27,7 @@ class ContactListPresenter {
     }
     
     func createContact() {
+        contactView?.presentCreateScreen()
     }
     
     func performFetch(_ completionHandler: (() -> Void)?) {

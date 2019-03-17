@@ -25,9 +25,10 @@ class ContactListTableViewController: UITableViewController {
         contactPresenter.performFetch {
             print("Data Fetched")
         }
-        
     }
-    
+    @IBAction func createContact(_ sender: UIBarButtonItem) {
+        contactPresenter.createContact()
+    }
 }
 
 
@@ -77,12 +78,20 @@ extension ContactListTableViewController {
         let detailsVC = ContactDetailsViewController.instantiate(storyboardName: .main) as! ContactDetailsViewController
         contactPresenter.performFetchWithID(id: contact.id ?? 0) {
             detailsVC.contactDetails = self.contactDetails
+            detailsVC.editOptions = self.contactEditOptions
             self.navigationController?.pushViewController(detailsVC, animated: true)
         }
     }
 }
 
 extension ContactListTableViewController: ContactView {
+    func presentCreateScreen() {
+        
+        let detailsVC = CreateContactViewController.instantiate(storyboardName: .main) as! CreateContactViewController
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+
+    }
+    
     
     
     func startLoading() {
@@ -113,8 +122,7 @@ extension ContactListTableViewController: ContactView {
     
     func setContactListWithID(user: ContactDetails) {
         contactDetails = user
-        contactEditOptions.append(ContactEditOption(fieldLabel: "First Name", fieldEditText: user.firstName ?? ""))
-        contactEditOptions.append(ContactEditOption(fieldLabel: "Last Name", fieldEditText: user.lastName ?? ""))
+        contactEditOptions.removeAll()
         contactEditOptions.append(ContactEditOption(fieldLabel: "mobile", fieldEditText: user.phoneNumber ?? ""))
         contactEditOptions.append(ContactEditOption(fieldLabel: "email", fieldEditText: user.email ?? ""))
         
