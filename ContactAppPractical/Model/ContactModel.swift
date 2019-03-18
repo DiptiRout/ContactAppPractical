@@ -32,9 +32,26 @@ struct ContactDetails: Codable {
 struct ContactEditOption: Codable {
     let fieldLabel: String?
     let fieldEditText: String?
+    let isPlaceHolder: Bool?
     
-    init(fieldLabel: String, fieldEditText: String) {
+    init(fieldLabel: String, fieldEditText: String, isPlaceHolder: Bool) {
         self.fieldLabel = fieldLabel
         self.fieldEditText = fieldEditText
+        self.isPlaceHolder = isPlaceHolder
+    }
+}
+
+struct SaveContact: Codable {
+    let firstName: String?
+    let lastName: String?
+    let email: String?
+    let phoneNumber: String?
+    let favorite: Bool?
+    init(firstName: String, lastName: String, email: String, phoneNumber: String, favorite: Bool) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.phoneNumber = phoneNumber
+        self.favorite = favorite
     }
 }

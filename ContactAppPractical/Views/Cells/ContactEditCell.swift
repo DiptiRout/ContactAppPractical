@@ -8,46 +8,51 @@
 
 import UIKit
 
+protocol ContactFieldDelegate: class {
+    func getValueWithKey(key: String, value: Any)
+}
+
 class ContactEditCell: UITableViewCell {
 
     @IBOutlet weak var fieldEditText: UITextField!
     @IBOutlet weak var fieldLabel: UILabel!
-    var isCreate = false
+    weak var keyDelegate: ContactFieldDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        fieldEditText.delegate = self
+        fieldEditText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+
     }
     
     var editOptions: ContactEditOption? {
         didSet {
             if let editOptions = editOptions {
-                if isCreate {
+                if editOptions.isPlaceHolder! {
                     fieldLabel.text = editOptions.fieldLabel
+                    fieldEditText.text = ""
                     fieldEditText.placeholder = editOptions.fieldEditText
                 }
                 else {
                     fieldLabel.text = editOptions.fieldLabel
                     fieldEditText.text = editOptions.fieldEditText
                 }
-                
+               
+                fieldEditText.accessibilityIdentifier = fieldLabel.text
+                if fieldEditText.accessibilityIdentifier == "mobile" {
+                    fieldEditText.keyboardType = .numberPad
+                }
+                else if fieldEditText.accessibilityIdentifier == "email" {
+                    fieldEditText.keyboardType = .emailAddress
+                }
+                else {
+                    fieldEditText.keyboardType = .default
+                }
             }
         }
     }
-}
-
-extension ContactEditCell: UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if fieldLabel.text == "mobile" {
-            textField.keyboardType = .numberPad
-        }
-        else if fieldLabel.text == "email" {
-            textField.keyboardType = .emailAddress
-        }
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        keyDelegate?.getValueWithKey(key: fieldLabel.text ?? "", value: textField.text ?? "")
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+
 }

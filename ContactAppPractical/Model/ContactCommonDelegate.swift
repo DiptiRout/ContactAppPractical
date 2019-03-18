@@ -1,5 +1,5 @@
 //
-//  ContactView.swift
+//  ContactCommonDelegate.swift
 //  ContactAppPractical
 //
 //  Created by Muvi on 16/03/19.
@@ -7,14 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
-protocol ContactView: class {
-    
+protocol ContactCommonDelegate: class {
     func startLoading()
     func finishLoading()
-    func presentCreateScreen()
-    func setContactList(users: [ContactList])
-    func setContactListWithID(user: ContactDetails)
+    func getRootView() -> UIView
     func showAlertWithError(error: Error)
-    
 }
+

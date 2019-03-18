@@ -15,10 +15,12 @@
 		DE011C70223CAA78007A013B /* ContactAppPracticalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE011C6F223CAA78007A013B /* ContactAppPracticalTests.swift */; };
 		DE011C7B223CAA78007A013B /* ContactAppPracticalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE011C7A223CAA78007A013B /* ContactAppPracticalUITests.swift */; };
 		DE011C8A223CABAD007A013B /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE011C89223CABAC007A013B /* ContactModel.swift */; };
-		DE011C8C223CAF5C007A013B /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE011C8B223CAF5C007A013B /* ContactView.swift */; };
+		DE011C8C223CAF5C007A013B /* ContactCommonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE011C8B223CAF5C007A013B /* ContactCommonDelegate.swift */; };
 		DE011C8E223CB051007A013B /* Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE011C8D223CB050007A013B /* Support.swift */; };
 		DE011C90223CB16E007A013B /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE011C8F223CB16E007A013B /* ContactService.swift */; };
 		DE011C93223CB507007A013B /* ContactListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE011C92223CB507007A013B /* ContactListPresenter.swift */; };
+		DE0393F5223F6C7C0096F99B /* ContactDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0393F4223F6C7C0096F99B /* ContactDetailsPresenter.swift */; };
+		DE0393F7223F845E0096F99B /* ContactEditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0393F6223F845E0096F99B /* ContactEditPresenter.swift */; };
 		DE39F6F6223D9153004AB3CC /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F6F5223D9153004AB3CC /* ContactListCell.swift */; };
 		DE39F6F8223E2021004AB3CC /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F6F7223E2021004AB3CC /* CachedImageView.swift */; };
 		DE39F6FB223E20AF004AB3CC /* DiscardableImageCacheItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F6FA223E20AF004AB3CC /* DiscardableImageCacheItem.swift */; };
@@ -28,6 +30,7 @@
 		DE39F706223E429C004AB3CC /* DRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F705223E429C004AB3CC /* DRView.swift */; };
 		DE565332223E79E700125D67 /* ContactEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE565331223E79E700125D67 /* ContactEditCell.swift */; };
 		DE565336223E99B000125D67 /* CreateContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE565335223E99B000125D67 /* CreateContactViewController.swift */; };
+		DE565338223ED47900125D67 /* ContactDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE565337223ED47900125D67 /* ContactDetailsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,10 +65,12 @@
 		DE011C7A223CAA78007A013B /* ContactAppPracticalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAppPracticalUITests.swift; sourceTree = "<group>"; };
 		DE011C7C223CAA78007A013B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE011C89223CABAC007A013B /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
-		DE011C8B223CAF5C007A013B /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
+		DE011C8B223CAF5C007A013B /* ContactCommonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCommonDelegate.swift; sourceTree = "<group>"; };
 		DE011C8D223CB050007A013B /* Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Support.swift; sourceTree = "<group>"; };
 		DE011C8F223CB16E007A013B /* ContactService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		DE011C92223CB507007A013B /* ContactListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPresenter.swift; sourceTree = "<group>"; };
+		DE0393F4223F6C7C0096F99B /* ContactDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsPresenter.swift; sourceTree = "<group>"; };
+		DE0393F6223F845E0096F99B /* ContactEditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditPresenter.swift; sourceTree = "<group>"; };
 		DE39F6F5223D9153004AB3CC /* ContactListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
 		DE39F6F7223E2021004AB3CC /* CachedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
 		DE39F6FA223E20AF004AB3CC /* DiscardableImageCacheItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscardableImageCacheItem.swift; sourceTree = "<group>"; };
@@ -75,6 +80,7 @@
 		DE39F705223E429C004AB3CC /* DRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DRView.swift; sourceTree = "<group>"; };
 		DE565331223E79E700125D67 /* ContactEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditCell.swift; sourceTree = "<group>"; };
 		DE565335223E99B000125D67 /* CreateContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContactViewController.swift; sourceTree = "<group>"; };
+		DE565337223ED47900125D67 /* ContactDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,9 +174,10 @@
 		DE011C88223CAB63007A013B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DE0393F3223F647E0096F99B /* Protocols */,
 				DE011C8D223CB050007A013B /* Support.swift */,
 				DE011C89223CABAC007A013B /* ContactModel.swift */,
-				DE011C8B223CAF5C007A013B /* ContactView.swift */,
+				DE011C8B223CAF5C007A013B /* ContactCommonDelegate.swift */,
 				DE011C8F223CB16E007A013B /* ContactService.swift */,
 			);
 			path = Model;
@@ -180,8 +187,17 @@
 			isa = PBXGroup;
 			children = (
 				DE011C92223CB507007A013B /* ContactListPresenter.swift */,
+				DE0393F4223F6C7C0096F99B /* ContactDetailsPresenter.swift */,
+				DE0393F6223F845E0096F99B /* ContactEditPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		DE0393F3223F647E0096F99B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		DE39F6F4223D9118004AB3CC /* Cells */ = {
@@ -189,6 +205,7 @@
 			children = (
 				DE39F6F5223D9153004AB3CC /* ContactListCell.swift */,
 				DE565331223E79E700125D67 /* ContactEditCell.swift */,
+				DE565337223ED47900125D67 /* ContactDetailsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -366,18 +383,21 @@
 				DE565336223E99B000125D67 /* CreateContactViewController.swift in Sources */,
 				DE39F6FB223E20AF004AB3CC /* DiscardableImageCacheItem.swift in Sources */,
 				DE39F6F6223D9153004AB3CC /* ContactListCell.swift in Sources */,
+				DE0393F5223F6C7C0096F99B /* ContactDetailsPresenter.swift in Sources */,
 				DE565332223E79E700125D67 /* ContactEditCell.swift in Sources */,
 				DE011C8E223CB051007A013B /* Support.swift in Sources */,
 				DE011C90223CB16E007A013B /* ContactService.swift in Sources */,
 				DE011C93223CB507007A013B /* ContactListPresenter.swift in Sources */,
 				DE39F700223E3930004AB3CC /* Swift+Extentions.swift in Sources */,
 				DE011C8A223CABAD007A013B /* ContactModel.swift in Sources */,
+				DE565338223ED47900125D67 /* ContactDetailsCell.swift in Sources */,
 				DE011C5B223CAA73007A013B /* AppDelegate.swift in Sources */,
 				DE00DBAD223D04B500110817 /* ContactListTableViewController.swift in Sources */,
 				DE39F706223E429C004AB3CC /* DRView.swift in Sources */,
 				DE39F6F8223E2021004AB3CC /* CachedImageView.swift in Sources */,
 				DE39F703223E3A4B004AB3CC /* ContactDetailsViewController.swift in Sources */,
-				DE011C8C223CAF5C007A013B /* ContactView.swift in Sources */,
+				DE011C8C223CAF5C007A013B /* ContactCommonDelegate.swift in Sources */,
+				DE0393F7223F845E0096F99B /* ContactEditPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,14 +572,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = JMBY7658LT;
 				INFOPLIST_FILE = ContactAppPractical/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.naruto.ContactAppPractical;
+				PRODUCT_BUNDLE_IDENTIFIER = com.release.gianttest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = GiantTestDevNew;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -569,14 +592,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ContactAppPractical/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.naruto.ContactAppPractical;
+				PRODUCT_BUNDLE_IDENTIFIER = com.release.gianttest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

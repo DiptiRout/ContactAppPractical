@@ -16,18 +16,18 @@ class ContactListTableViewController: UITableViewController {
     fileprivate var contactDetails: ContactDetails!
     fileprivate var contactEditOptions = [ContactEditOption]()
 
-    fileprivate let contactPresenter = ContactListPresenter(contactService: ContactService())
+    fileprivate var contactPresenter: ContactListPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ContactListCell.self, forCellReuseIdentifier: cellID)
-        contactPresenter.attachView(view: self)
-        contactPresenter.performFetch {
+        contactPresenter = ContactListPresenter(contactService: ContactService(), cvDelegate: self)
+        contactPresenter?.performFetch {
             print("Data Fetched")
         }
     }
     @IBAction func createContact(_ sender: UIBarButtonItem) {
-        contactPresenter.createContact()
+        contactPresenter?.createContact()
     }
 }
 
@@ -83,16 +83,16 @@ extension ContactListTableViewController {
     }
 }
 
-extension ContactListTableViewController: ContactView {
+extension ContactListTableViewController: ContactListDelegate {
+    func getRootView() -> UIView {
+        return self.view
+    }
     func presentCreateScreen() {
         
         let detailsVC = CreateContactViewController.instantiate(storyboardName: .main) as! CreateContactViewController
         self.navigationController?.pushViewController(detailsVC, animated: true)
-
     }
-    
-    
-    
+        
     func startLoading() {
         
     }
@@ -100,10 +100,9 @@ extension ContactListTableViewController: ContactView {
     func finishLoading() {
 
     }
-    
     func setContactList(users: [ContactList]) {
     
-        let sortedContacts = users.sorted(by: { $0.firstName ?? "" < $1.firstName ?? ""}) // sort the Array first.
+        let sortedContacts = users.sorted(by: { $0.firstName ?? "" < $1.firstName ?? ""}) 
         let groupedContacts = sortedContacts.reduce([[ContactList]]()) {
             guard var last = $0.last else { return [[$1]] }
             var collection = $0
@@ -118,16 +117,6 @@ extension ContactListTableViewController: ContactView {
         groupedContactList = groupedContacts
         tableView.reloadData()
     }
-    
-    func setContactListWithID(user: ContactDetails) {
-        contactDetails = user
-        contactEditOptions.removeAll()
-        contactEditOptions.append(ContactEditOption(fieldLabel: "mobile", fieldEditText: user.phoneNumber ?? ""))
-        contactEditOptions.append(ContactEditOption(fieldLabel: "email", fieldEditText: user.email ?? ""))
-        
-    }
-    
-    
     func showAlertWithError(error: Error) {
     }
     
