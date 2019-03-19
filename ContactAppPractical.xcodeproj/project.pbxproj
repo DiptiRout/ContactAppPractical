@@ -58,7 +58,7 @@
 		DE011C5F223CAA73007A013B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE011C61223CAA78007A013B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE011C64223CAA78007A013B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DE011C66223CAA78007A013B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE011C66223CAA78007A013B /* Contact-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Contact-Info.plist"; sourceTree = "<group>"; };
 		DE011C6B223CAA78007A013B /* ContactAppPracticalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactAppPracticalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE011C6F223CAA78007A013B /* ContactAppPracticalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAppPracticalTests.swift; sourceTree = "<group>"; };
 		DE011C71223CAA78007A013B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -147,10 +147,6 @@
 				DE011C91223CB4E6007A013B /* Presenter */,
 				DE00DBAB223D02FC00110817 /* Views */,
 				DE011C88223CAB63007A013B /* Model */,
-				DE011C5E223CAA73007A013B /* Main.storyboard */,
-				DE011C61223CAA78007A013B /* Assets.xcassets */,
-				DE011C63223CAA78007A013B /* LaunchScreen.storyboard */,
-				DE011C66223CAA78007A013B /* Info.plist */,
 			);
 			path = ContactAppPractical;
 			sourceTree = "<group>";
@@ -176,7 +172,6 @@
 		DE011C88223CAB63007A013B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DE0393F3223F647E0096F99B /* Protocols */,
 				DE011C8D223CB050007A013B /* Support.swift */,
 				DE011C89223CABAC007A013B /* ContactModel.swift */,
 				DE011C8B223CAF5C007A013B /* ContactCommonDelegate.swift */,
@@ -195,11 +190,13 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
-		DE0393F3223F647E0096F99B /* Protocols */ = {
+		DE0564732241A31700EE67BD /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				DE011C5E223CAA73007A013B /* Main.storyboard */,
+				DE011C63223CAA78007A013B /* LaunchScreen.storyboard */,
 			);
-			path = Protocols;
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		DE39F6F4223D9118004AB3CC /* Cells */ = {
@@ -227,8 +224,11 @@
 				DE011C5A223CAA73007A013B /* AppDelegate.swift */,
 				DE39F6FD223E2D6B004AB3CC /* UIView+Anchors.swift */,
 				DE39F6FF223E3930004AB3CC /* Swift+Extentions.swift */,
-				DE39F6F9223E2091004AB3CC /* ImageCache */,
 				DE0627A222414E7D002DBCE2 /* SwiftyJSON.swift */,
+				DE011C66223CAA78007A013B /* Contact-Info.plist */,
+				DE011C61223CAA78007A013B /* Assets.xcassets */,
+				DE0564732241A31700EE67BD /* Storyboard */,
+				DE39F6F9223E2091004AB3CC /* ImageCache */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -578,13 +578,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = JMBY7658LT;
-				INFOPLIST_FILE = ContactAppPractical/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ContactAppPractical/Utility/Contact-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.release.gianttest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naruto.ContactAppPractical;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = GiantTestDevNew;
 				SWIFT_VERSION = 4.2;
@@ -598,13 +598,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = ContactAppPractical/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ContactAppPractical/Utility/Contact-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.release.gianttest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.naruto.ContactAppPractical;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
