@@ -26,10 +26,12 @@ class CreateContactViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         contactPresenter = ContactEditPresenter(contactService: ContactService(), ceDelegate: self)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveContact))
+        self.navigationItem.rightBarButtonItem?.accessibilityLabel = "DONE"
         setUpData()
         
        
@@ -58,6 +60,10 @@ class CreateContactViewController: UITableViewController {
     }
     
     @objc func saveContact() {
+        let error = ErrorsInContact.allFieldsAreEmpty
+        if bodyData.count == 0 {
+            showAlertWithError(error: error)
+        }
         if isPlaceHolder {
             bodyData["favorite"] = favStatus
             contactPresenter?.saveContact(body: bodyData) {
@@ -112,7 +118,15 @@ extension CreateContactViewController: ContactEditDelegate {
     }
     
     func showAlertWithError(error: Error) {
-        print("show alert")
+        let alert = UIAlertController(title: "ERROR",
+                                      message: error.localizedDescription,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "dismiss",
+                                      style: .cancel,
+                                      handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
     
     func getRootView() -> UIView {

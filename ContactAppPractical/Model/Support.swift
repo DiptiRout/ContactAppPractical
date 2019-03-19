@@ -19,6 +19,25 @@ enum FetchError: Error {
     case deserialization(Error)
 }
 
+enum ErrorsInContact: Error {
+    case allFieldsAreEmpty
+    case firstNameIsEmpty
+    case lastNameIsEmpty
+}
+
+extension ErrorsInContact: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .allFieldsAreEmpty:
+            return "All fields are empty!"
+        case .firstNameIsEmpty:
+            return "First name is empty!"
+        case .lastNameIsEmpty:
+            return "Last name is empty!"
+        }
+    }
+}
+
 extension FetchError: LocalizedError {
     var errorDescription: String? {
         switch self {

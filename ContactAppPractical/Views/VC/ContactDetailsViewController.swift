@@ -27,7 +27,9 @@ class ContactDetailsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem?.accessibilityLabel = "EDIT"
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         contactPresenter = ContactDetailsPresenter(contactService: ContactService(), cdDelegate: self)
@@ -91,7 +93,8 @@ class ContactDetailsViewController: UITableViewController {
         //super.setEditing(editing, animated: animated)
         let detailsVC = CreateContactViewController.instantiate(storyboardName: .main) as! CreateContactViewController
         detailsVC.contactDetails = contactDetails
-        self.navigationController?.pushViewController(detailsVC, animated: true)
+        let navVC  = UINavigationController(rootViewController: detailsVC)
+        self.present(navVC, animated: false, completion: nil)
     }
 
     // MARK: - Table view data source

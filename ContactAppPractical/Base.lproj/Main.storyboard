@@ -29,6 +29,9 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="ListView"/>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <outlet property="dataSource" destination="c11-az-LhH" id="gR9-7A-aWZ"/>
                             <outlet property="delegate" destination="c11-az-LhH" id="Orl-Hg-JRR"/>
@@ -40,6 +43,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Wrw-Mo-qRS">
                             <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="ADD"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="createContact:" destination="c11-az-LhH" id="1tP-0A-BNw"/>
                             </connections>

@@ -75,9 +75,12 @@ class ContactService {
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, _, networkError) in
             DispatchQueue.main.async {
+                guard let data = data else {
+                    return
+                }
                 //handler(handleFetchResponse(data: data, networkError: networkError))
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                     print(JSONStringEncoder().encode(json).jsonString ?? "NAN")
                     
                 } catch {
