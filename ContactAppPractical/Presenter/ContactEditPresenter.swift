@@ -10,7 +10,7 @@ import Foundation
 
 
 protocol ContactEditDelegate: ContactCommonDelegate {
-    func createNewContact()
+    func createNewContact(response: ContactDetails)
     func updateAnyContact()
 }
 
@@ -32,7 +32,7 @@ class ContactEditPresenter {
             case .ok(let response):
                 print(response)
                 self?.ceDelegate?.finishLoading()
-                self?.ceDelegate?.createNewContact()
+                self?.ceDelegate?.createNewContact(response: response)
             case .error(let error):
                 self?.ceDelegate?.showAlertWithError(error: error)
             }

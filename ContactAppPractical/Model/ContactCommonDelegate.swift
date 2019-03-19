@@ -14,5 +14,6 @@ protocol ContactCommonDelegate: class {
     func finishLoading()
     func getRootView() -> UIView
     func showAlertWithError(error: Error)
+    func showAlertWithMSG(message: String)
 }
 

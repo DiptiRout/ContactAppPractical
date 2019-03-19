@@ -77,19 +77,24 @@ extension ContactListTableViewController {
         let contact = groupedContactList[indexPath.section][indexPath.row]
         let detailsVC = ContactDetailsViewController.instantiate(storyboardName: .main) as! ContactDetailsViewController
         detailsVC.selectedContact = contact
-        self.present(detailsVC, animated: false, completion: nil)
+        
+        self.present(UINavigationController(rootViewController: detailsVC), animated: false, completion: nil)
         
     }
 }
 
 extension ContactListTableViewController: ContactListDelegate {
+    func showAlertWithMSG(message: String) {
+        
+    }
+    
     func getRootView() -> UIView {
         return self.view
     }
     func presentCreateScreen() {
         
         let detailsVC = CreateContactViewController.instantiate(storyboardName: .main) as! CreateContactViewController
-        self.present(detailsVC, animated: false, completion: nil)
+        self.present(UINavigationController(rootViewController: detailsVC), animated: false, completion: nil)
     }
         
     func startLoading() {

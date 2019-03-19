@@ -12,7 +12,7 @@
         <!--Contacts-->
         <scene sceneID="xTZ-1l-gov">
             <objects>
-                <tableViewController id="c11-az-LhH" customClass="ContactListTableViewController" customModule="ContactAppPractical" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ContactListTableViewController" id="c11-az-LhH" customClass="ContactListTableViewController" customModule="ContactAppPractical" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="0DB-81-3aV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -177,7 +177,6 @@
                             <outlet property="delegate" destination="TPj-zh-WuZ" id="Zee-C7-bgg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="tsF-0L-aNy"/>
                     <connections>
                         <outlet property="callButton" destination="6ne-kX-wjZ" id="BGG-Lc-CBf"/>
                         <outlet property="emailButton" destination="gR2-X8-N4u" id="iMo-Vj-zBn"/>
@@ -189,7 +188,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EAM-8B-Y5G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1750.7246376811595" y="109.23913043478262"/>
+            <point key="canvasLocation" x="1787" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jNo-YC-EG1">
@@ -313,7 +312,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbL-qH-4Rh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2501" y="110"/>
+            <point key="canvasLocation" x="2535" y="110"/>
         </scene>
     </scenes>
     <resources>

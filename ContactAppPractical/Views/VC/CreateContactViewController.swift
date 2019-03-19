@@ -26,18 +26,23 @@ class CreateContactViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
         contactPresenter = ContactEditPresenter(contactService: ContactService(), ceDelegate: self)
+        setupNavBar()
+        setUpData()
+        
+    }
+    
+
+    func setupNavBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveContact))
+        navigationItem.leftBarButtonItem  = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(backAction(_:)))
         self.navigationItem.rightBarButtonItem?.accessibilityLabel = "DONE"
-        setUpData()
-        
-       
     }
     
     func setUpData() {
+        tableView.tableFooterView = UIView()
         self.hideKeyboardWhenTappedAround()
         isPlaceHolder = (contactDetails != nil) ? false : true
         editOptions.append(ContactEditOption(fieldLabel: "First Name", fieldEditText: contactDetails?.firstName ?? "First Name", isPlaceHolder: isPlaceHolder))
@@ -59,6 +64,10 @@ class CreateContactViewController: UITableViewController {
         }
     }
     
+    @objc func backAction(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
     @objc func saveContact() {
         let error = ErrorsInContact.allFieldsAreEmpty
         if bodyData.count == 0 {
@@ -67,7 +76,9 @@ class CreateContactViewController: UITableViewController {
         if isPlaceHolder {
             bodyData["favorite"] = favStatus
             contactPresenter?.saveContact(body: bodyData) {
-                self.navigationController?.popViewController(animated: true)
+                
+                let detailsVC = ContactListTableViewController.instantiate(storyboardName: .main) as! ContactListTableViewController
+                self.present(UINavigationController(rootViewController: detailsVC), animated: false, completion: nil)
             }
 
         }
@@ -101,8 +112,20 @@ class CreateContactViewController: UITableViewController {
 }
 
 extension CreateContactViewController: ContactEditDelegate {
-    func createNewContact() {
-        print("Create")
+    func showAlertWithMSG(message: String) {
+        let alert = UIAlertController(title: "Alert",
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "dismiss",
+                                      style: .cancel,
+                                      handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func createNewContact(response: ContactDetails) {
+        self.contactDetails = response
     }
     
     func updateAnyContact() {

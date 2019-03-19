@@ -28,10 +28,7 @@ class ContactDetailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
-        self.navigationItem.rightBarButtonItem?.accessibilityLabel = "EDIT"
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        setupNavBar()
         contactPresenter = ContactDetailsPresenter(contactService: ContactService(), cdDelegate: self)
         msgButton.set(image: #imageLiteral(resourceName: "message_button"), title: "message", titlePosition: .bottom, additionalSpacing: 0, state: .normal)
         callButton.set(image: #imageLiteral(resourceName: "call_button"), title: "call", titlePosition: .bottom, additionalSpacing: 0, state: .normal)
@@ -45,8 +42,25 @@ class ContactDetailsViewController: UITableViewController {
             self.setUpHeaderView()
             self.tableView.reloadData()
         }
+
     }
     
+    @objc func backAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: false, completion: nil)
+    }
+    @objc func openEditPage(_ sender: UIBarButtonItem) {
+        let detailsVC = CreateContactViewController.instantiate(storyboardName: .main) as! CreateContactViewController
+        detailsVC.contactDetails = contactDetails
+        self.present(UINavigationController(rootViewController: detailsVC), animated: false, completion: nil)
+    }
+    func setupNavBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(openEditPage(_:)))
+        self.navigationItem.leftBarButtonItem  = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(backAction(_:)))
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.3137254902, green: 0.8901960784, blue: 0.7607843137, alpha: 1)
+        self.navigationItem.rightBarButtonItem?.accessibilityLabel = "EDIT"
+    }
     func setUpHeaderView() {
         favButton.addTarget(self, action: #selector(favButtonTapped(sender:)), for: .touchUpInside)
         headerImageView.layer.cornerRadius = headerImageView.frame.width/2
@@ -89,14 +103,6 @@ class ContactDetailsViewController: UITableViewController {
         }
     }
     
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        //super.setEditing(editing, animated: animated)
-        let detailsVC = CreateContactViewController.instantiate(storyboardName: .main) as! CreateContactViewController
-        detailsVC.contactDetails = contactDetails
-        let navVC  = UINavigationController(rootViewController: detailsVC)
-        self.present(navVC, animated: false, completion: nil)
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -119,6 +125,10 @@ class ContactDetailsViewController: UITableViewController {
 }
 
 extension ContactDetailsViewController: ContactDetailsDelegate {
+    func showAlertWithMSG(message: String) {
+        
+    }
+    
     func updateAnyContact() {
         print("Update")
     }
