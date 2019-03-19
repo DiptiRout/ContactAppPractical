@@ -12,17 +12,18 @@ class ContactListTableViewController: UITableViewController {
 
     
     let cellID = "ContactListCell"
+    let baseURL = "http://gojek-contacts-app.herokuapp.com/contacts.json"
+
     fileprivate var groupedContactList = [[ContactList]]()
     fileprivate var contactDetails: ContactDetails!
     fileprivate var contactEditOptions = [ContactEditOption]()
-
     fileprivate var contactPresenter: ContactListPresenter?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ContactListCell.self, forCellReuseIdentifier: cellID)
         contactPresenter = ContactListPresenter(contactService: ContactService(), cvDelegate: self)
-        contactPresenter?.performFetch {
+        contactPresenter?.performFetch(url: baseURL) {
             print("Data Fetched")
         }
     }
@@ -77,17 +78,13 @@ extension ContactListTableViewController {
         let contact = groupedContactList[indexPath.section][indexPath.row]
         let detailsVC = ContactDetailsViewController.instantiate(storyboardName: .main) as! ContactDetailsViewController
         detailsVC.selectedContact = contact
-        
         self.present(UINavigationController(rootViewController: detailsVC), animated: false, completion: nil)
         
     }
 }
 
 extension ContactListTableViewController: ContactListDelegate {
-    func showAlertWithMSG(message: String) {
-        
-    }
-    
+   
     func getRootView() -> UIView {
         return self.view
     }
@@ -105,7 +102,6 @@ extension ContactListTableViewController: ContactListDelegate {
 
     }
     func setContactList(users: [ContactList]) {
-    
         let sortedContacts = users.sorted(by: { $0.firstName ?? "" < $1.firstName ?? ""}) 
         let groupedContacts = sortedContacts.reduce([[ContactList]]()) {
             guard var last = $0.last else { return [[$1]] }
@@ -121,7 +117,23 @@ extension ContactListTableViewController: ContactListDelegate {
         groupedContactList = groupedContacts
         tableView.reloadData()
     }
-    func showAlertWithError(error: Error) {
+    func showAlert(message: String, error: Error?) {
+        var msg = ""
+        if error == nil {
+            msg = message
+        }
+        else {
+            msg = error?.localizedDescription ?? "Something went wrong. Please try again!"
+        }
+        let alert = UIAlertController(title: "ALERT!",
+                                      message: msg,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "dismiss",
+                                      style: .cancel,
+                                      handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
     
     

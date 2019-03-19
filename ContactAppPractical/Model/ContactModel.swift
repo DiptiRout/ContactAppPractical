@@ -15,6 +15,16 @@ struct ContactList: Codable {
     let profilePic: String?
     let favorite: Bool?
     let url: String?
+    
+    init(json: JSON) {
+        self.id = json["id"].intValue
+        self.firstName = json["first_name"].stringValue
+        self.lastName = json["last_name"].stringValue
+        self.profilePic = json["profile_pic"].stringValue
+        self.favorite = json["favorite"].boolValue
+        self.url = json["url"].stringValue
+    }
+    
 }
 
 struct ContactDetails: Codable {
@@ -27,6 +37,19 @@ struct ContactDetails: Codable {
     let favorite: Bool?
     let createdAt: String?
     let updatedAt: String?
+    
+    init(json: [String: JSON]) {
+        self.id = json["id"]?.intValue
+        self.firstName = json["first_name"]?.stringValue
+        self.lastName = json["last_name"]?.stringValue
+        self.email = json["email"]?.stringValue
+        self.phoneNumber = json["phone_number"]?.stringValue
+        self.profilePic = json["profile_pic"]?.stringValue
+        self.favorite = json["favorite"]?.boolValue
+        self.createdAt = json["created_at"]?.stringValue
+        self.updatedAt = json["updated_at"]?.stringValue
+    }
+    
 }
 
 struct ContactEditOption: Codable {

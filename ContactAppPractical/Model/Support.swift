@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum Result<T, E: Error> {
-    case ok(T)
+enum Result<JSON, E: Error> {
+    case ok(JSON)
     case error(E)
 }
 
@@ -17,25 +17,10 @@ enum FetchError: Error {
     case load(Error)
     case noData
     case deserialization(Error)
-}
-
-enum ErrorsInContact: Error {
     case allFieldsAreEmpty
     case firstNameIsEmpty
     case lastNameIsEmpty
-}
-
-extension ErrorsInContact: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .allFieldsAreEmpty:
-            return "All fields are empty!"
-        case .firstNameIsEmpty:
-            return "First name is empty!"
-        case .lastNameIsEmpty:
-            return "Last name is empty!"
-        }
-    }
+    case invalidPhoneNumber(String)
 }
 
 extension FetchError: LocalizedError {
@@ -47,11 +32,19 @@ extension FetchError: LocalizedError {
             return NSLocalizedString("fetchError.deserialization", comment: "")
         case .noData:
             return NSLocalizedString("fetchError.noData", comment: "")
+        case .allFieldsAreEmpty:
+            return "All fields are empty!"
+        case .firstNameIsEmpty:
+            return "First name is empty!"
+        case .lastNameIsEmpty:
+            return "Last name is empty!"
+        case .invalidPhoneNumber(let msg):
+            return msg
         }
     }
 }
 
-func handleFetchResponse<T: Decodable>(data: Data?, networkError: Error?) -> Result<T, FetchError> {
+func handleFetchResponse(data: Data?, networkError: Error?) -> Result<JSON, FetchError> {
     if let networkError = networkError {
         return .error(FetchError.load(networkError))
     }
@@ -59,11 +52,29 @@ func handleFetchResponse<T: Decodable>(data: Data?, networkError: Error?) -> Res
     guard let data = data else {
         return .error(FetchError.noData)
     }
-    let decoder = JSONDecoder()
-    decoder.keyDecodingStrategy = .convertFromSnakeCase
     do {
-        let response = try decoder.decode(T.self, from: data)
-        return .ok(response)
+        let json = try JSON(data: data)
+        switch json.type {
+        case .array:
+            let key = json.arrayValue.first?.dictionaryValue.keys.first
+            if key == "errors" {
+                return .error(FetchError.firstNameIsEmpty)
+            }
+            else {
+                return .ok(json)
+            }
+        case .dictionary:
+            let key = json.dictionaryValue.keys.first
+            if key == "errors" {
+                let value = json["errors"][0].stringValue
+                return .error(FetchError.invalidPhoneNumber(value))
+            }
+            else {
+                return .ok(json)
+            }
+        default:
+            return .ok(json)
+        }
     } catch {
         return .error(FetchError.deserialization(error))
     }

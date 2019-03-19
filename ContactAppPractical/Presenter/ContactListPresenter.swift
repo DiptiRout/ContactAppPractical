@@ -32,15 +32,20 @@ class ContactListPresenter {
         cvDelegate?.presentCreateScreen()
     }
     
-    func performFetch(_ completionHandler: (() -> Void)?) {
+    func performFetch(url: String, _ completionHandler: (() -> Void)?) {
         self.cvDelegate?.startLoading()
-        contactService.fetchContactList { [weak self] (result) in
+        contactService.fetchContact(urlString: url) { [weak self] (result) in
+            defer { completionHandler?() }
             switch result {
             case .ok(let response):
                 self?.cvDelegate?.finishLoading()
-                self?.cvDelegate?.setContactList(users: response)
+                var users = [ContactList]()
+                for user in response.arrayValue {
+                    users.append(ContactList(json: user))
+                }
+                self?.cvDelegate?.setContactList(users: users)
             case .error(let error):
-                self?.cvDelegate?.showAlertWithError(error: error)
+                self?.cvDelegate?.showAlert(message: "", error: error)
             }
         }
     }

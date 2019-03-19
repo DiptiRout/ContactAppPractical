@@ -38,7 +38,7 @@ class ContactDetailsViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        contactPresenter?.performFetchWithID(id: selectedContact?.id ?? 0) {
+        contactPresenter?.performFetch(url: selectedContact?.url ?? "") {
             self.setUpHeaderView()
             self.tableView.reloadData()
         }
@@ -99,7 +99,7 @@ class ContactDetailsViewController: UITableViewController {
         
         let favStatus = sender.isSelected
         let bodyData = ["favorite" : favStatus]
-        contactPresenter?.updateContact(id: contactDetails?.id ?? 0, body: bodyData) {
+        contactPresenter?.updateContact(urlString: selectedContact?.url ?? "", body: bodyData) {
         }
     }
     
@@ -125,10 +125,7 @@ class ContactDetailsViewController: UITableViewController {
 }
 
 extension ContactDetailsViewController: ContactDetailsDelegate {
-    func showAlertWithMSG(message: String) {
         
-    }
-    
     func updateAnyContact() {
         print("Update")
     }
@@ -141,14 +138,30 @@ extension ContactDetailsViewController: ContactDetailsDelegate {
     
     func finishLoading() {
     }
-    func setContactListWithID(user: ContactDetails) {
+    func setContactWithID(user: ContactDetails) {
         contactDetails = user
         editOptions.removeAll()
         editOptions.append(ContactEditOption(fieldLabel: "mobile", fieldEditText: user.phoneNumber ?? "", isPlaceHolder: false))
         editOptions.append(ContactEditOption(fieldLabel: "email", fieldEditText: user.email ?? "", isPlaceHolder: false))
         
     }    
-    func showAlertWithError(error: Error) {
+    func showAlert(message: String, error: Error?) {
+        var msg = ""
+        if error == nil {
+            msg = message
+        }
+        else {
+            msg = error?.localizedDescription ?? "Something went wrong. Please try again!"
+        }
+        let alert = UIAlertController(title: "ALERT!",
+                                      message: msg,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "dismiss",
+                                      style: .cancel,
+                                      handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
     
     

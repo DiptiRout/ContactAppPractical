@@ -32,24 +32,27 @@ class ContactEditPresenter {
             case .ok(let response):
                 print(response)
                 self?.ceDelegate?.finishLoading()
-                self?.ceDelegate?.createNewContact(response: response)
+                let user = ContactDetails(json: response.dictionaryValue)
+                self?.ceDelegate?.createNewContact(response: user)
+                self?.ceDelegate?.showAlert(message: "Contact updated successfully", error: nil)
             case .error(let error):
-                self?.ceDelegate?.showAlertWithError(error: error)
+                self?.ceDelegate?.showAlert(message: "", error: error)
             }
         }
     }
     
-    func updateContact(id: Int, body: [String: Any], _ completionHandler: (() -> Void)?) {
+    func updateContact(urlString: String, body: [String: Any], _ completionHandler: (() -> Void)?) {
         self.ceDelegate?.startLoading()
-        contactService.updateContact(id: id, body: body) { [weak self] (result) in
+        contactService.updateContact(urlString: urlString, body: body) { [weak self] (result) in
             defer { completionHandler?() }
             switch result {
             case .ok(let response):
                 print(response)
                 self?.ceDelegate?.finishLoading()
                 self?.ceDelegate?.updateAnyContact()
+                self?.ceDelegate?.showAlert(message: "Contact updated successfully", error: nil)
             case .error(let error):
-                self?.ceDelegate?.showAlertWithError(error: error)
+                self?.ceDelegate?.showAlert(message: "", error: error)
             }
         }
     }

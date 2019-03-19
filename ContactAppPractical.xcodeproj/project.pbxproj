@@ -21,6 +21,7 @@
 		DE011C93223CB507007A013B /* ContactListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE011C92223CB507007A013B /* ContactListPresenter.swift */; };
 		DE0393F5223F6C7C0096F99B /* ContactDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0393F4223F6C7C0096F99B /* ContactDetailsPresenter.swift */; };
 		DE0393F7223F845E0096F99B /* ContactEditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0393F6223F845E0096F99B /* ContactEditPresenter.swift */; };
+		DE0627A322414E7D002DBCE2 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0627A222414E7D002DBCE2 /* SwiftyJSON.swift */; };
 		DE39F6F6223D9153004AB3CC /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F6F5223D9153004AB3CC /* ContactListCell.swift */; };
 		DE39F6F8223E2021004AB3CC /* CachedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F6F7223E2021004AB3CC /* CachedImageView.swift */; };
 		DE39F6FB223E20AF004AB3CC /* DiscardableImageCacheItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE39F6FA223E20AF004AB3CC /* DiscardableImageCacheItem.swift */; };
@@ -71,6 +72,7 @@
 		DE011C92223CB507007A013B /* ContactListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPresenter.swift; sourceTree = "<group>"; };
 		DE0393F4223F6C7C0096F99B /* ContactDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsPresenter.swift; sourceTree = "<group>"; };
 		DE0393F6223F845E0096F99B /* ContactEditPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactEditPresenter.swift; sourceTree = "<group>"; };
+		DE0627A222414E7D002DBCE2 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		DE39F6F5223D9153004AB3CC /* ContactListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
 		DE39F6F7223E2021004AB3CC /* CachedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedImageView.swift; sourceTree = "<group>"; };
 		DE39F6FA223E20AF004AB3CC /* DiscardableImageCacheItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscardableImageCacheItem.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				DE39F6FD223E2D6B004AB3CC /* UIView+Anchors.swift */,
 				DE39F6FF223E3930004AB3CC /* Swift+Extentions.swift */,
 				DE39F6F9223E2091004AB3CC /* ImageCache */,
+				DE0627A222414E7D002DBCE2 /* SwiftyJSON.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				DE39F6FE223E2DAC004AB3CC /* UIView+Anchors.swift in Sources */,
 				DE565336223E99B000125D67 /* CreateContactViewController.swift in Sources */,
 				DE39F6FB223E20AF004AB3CC /* DiscardableImageCacheItem.swift in Sources */,
+				DE0627A322414E7D002DBCE2 /* SwiftyJSON.swift in Sources */,
 				DE39F6F6223D9153004AB3CC /* ContactListCell.swift in Sources */,
 				DE0393F5223F6C7C0096F99B /* ContactDetailsPresenter.swift in Sources */,
 				DE565332223E79E700125D67 /* ContactEditCell.swift in Sources */,

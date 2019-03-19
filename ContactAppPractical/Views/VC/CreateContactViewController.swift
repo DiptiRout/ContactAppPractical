@@ -38,6 +38,7 @@ class CreateContactViewController: UITableViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(saveContact))
         navigationItem.leftBarButtonItem  = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(backAction(_:)))
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.3137254902, green: 0.8901960784, blue: 0.7607843137, alpha: 1)
         self.navigationItem.rightBarButtonItem?.accessibilityLabel = "DONE"
     }
     
@@ -69,22 +70,21 @@ class CreateContactViewController: UITableViewController {
     }
     
     @objc func saveContact() {
-        let error = ErrorsInContact.allFieldsAreEmpty
+        let error = FetchError.allFieldsAreEmpty
         if bodyData.count == 0 {
-            showAlertWithError(error: error)
+            showAlert(message: "", error: error)
+            return
         }
         if isPlaceHolder {
             bodyData["favorite"] = favStatus
             contactPresenter?.saveContact(body: bodyData) {
-                
-                let detailsVC = ContactListTableViewController.instantiate(storyboardName: .main) as! ContactListTableViewController
-                self.present(UINavigationController(rootViewController: detailsVC), animated: false, completion: nil)
             }
 
         }
         else {
-            contactPresenter?.updateContact(id: contactDetails?.id ?? 0, body: bodyData) {
-                self.navigationController?.popViewController(animated: true)
+            let id = contactDetails?.id ?? 0
+            let baseURL = "http://gojek-contacts-app.herokuapp.com/contacts/\(id).json"
+            contactPresenter?.updateContact(urlString: baseURL, body: bodyData) {
             }
         }
     }
@@ -112,24 +112,16 @@ class CreateContactViewController: UITableViewController {
 }
 
 extension CreateContactViewController: ContactEditDelegate {
-    func showAlertWithMSG(message: String) {
-        let alert = UIAlertController(title: "Alert",
-                                      message: message,
-                                      preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "dismiss",
-                                      style: .cancel,
-                                      handler: nil))
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
+  
     func createNewContact(response: ContactDetails) {
         self.contactDetails = response
+        let detailsVC = ContactListTableViewController.instantiate(storyboardName: .main) as! ContactListTableViewController
+        self.present(UINavigationController(rootViewController: detailsVC), animated: false, completion: nil)
     }
     
     func updateAnyContact() {
         print("Update")
+        self.dismiss(animated: false, completion: nil)
     }
     
     func startLoading() {
@@ -140,9 +132,16 @@ extension CreateContactViewController: ContactEditDelegate {
         print("stop loading")
     }
     
-    func showAlertWithError(error: Error) {
-        let alert = UIAlertController(title: "ERROR",
-                                      message: error.localizedDescription,
+    func showAlert(message: String, error: Error?) {
+        var msg = ""
+        if error == nil {
+            msg = message
+        }
+        else {
+            msg = error?.localizedDescription ?? "Something went wrong. Please try again!"
+        }
+        let alert = UIAlertController(title: "ALERT!",
+                                      message: msg,
                                       preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "dismiss",
